@@ -26,15 +26,6 @@ gender_f = df.gender == 'f'
 gender_m = df.gender == 'm'
 
 
-	
-
-print len(df.loc[gender_f & result_yes])
-print len(df.loc[gender_f & result_no])
-
-print len(df.loc[gender_m & result_yes])
-print len(df.loc[gender_m & result_no])
-
-
 with open('gender.csv', 'w') as writeFileGender:
 	writer = csv.writer(writeFileGender,delimiter=',')
 	writer.writerow(['','yes','no','total'])
@@ -52,18 +43,35 @@ with open('speciality.csv','w') as writeFileSpeciality:
 with open('age.csv','w') as writeFileAge:
 	writer = csv.writer(writeFileAge,delimiter=',')
 	writer.writerow(['','yes','no','total'])
-	writer.writerow(['less',len(df.loc[age_less & result_yes]),len(df.loc[age_less & result_no])])
-	writer.writerow(['greater',len(df.loc[age_greater & result_yes]),len(df.loc[age_greater & result_no])])
+	writer.writerow(['less',len(df.loc[age_less & result_yes]),len(df.loc[age_less & result_no]),len(df.loc[age_less & result_yes])+len(df.loc[age_less & result_no])])
+	writer.writerow(['greater',len(df.loc[age_greater & result_yes]),len(df.loc[age_greater & result_no]),len(df.loc[age_greater & result_yes])+len(df.loc[age_greater & result_no])])
 
 
 
 
-df1 = pd.read_csv('gender.csv')
-print csv.reader(df1)
-print 1 - (float(df1.yes[0])/float(df1.total[0]))**2 - (float(df1.no[0])/float(df1.total[0]))**2
-print 1 - (float(df1.yes[1])/float(df1.total[1]))**2 - (float(df1.no[1])/float(df1.total[1]))**2
+def FirstMath(filename):
+	df2 = pd.read_csv(filename)
+	f = []
+	#print csv.reader(df2)
+	#print(len(df2))
+	for i in range(0,len(df2)):
+		ff = 1 - ( ((float(df2.yes[i])/float(df2.total[i]))**2) ) - ( ((float(df2.no[i])/float(df2.total[i]))**2) )
+		f.append(ff)
+	print f
+	for i in range(0,len(f)):
+		p = (float(df2.total[i])/16 * f[i])
+
+	print (float(df2.total[0])/16 * f[0]) + (float(df2.total[1])/16 * f[1])
 
 
-#0.444 0.111
-print 2**2
+	#print   1 - ( ((float(df2.yes[0])/float(df2.total[0]))**2) ) - ( ((float(df2.no[0])/float(df2.total[0]))**2) )
+	#print   ( ((float(df2.yes[0])/float(df2.total[0]))**2) , ((float(df2.no[0])/float(df2.total[0]))**2) )
+	#print   1 - ( ((float(df2.yes[1])/float(df2.total[1]))**2) ) - ( ((float(df2.no[1])/float(df2.total[1]))**2) )
+	#print   ( ((float(df2.yes[1])/float(df2.total[1]))**2) , ((float(df2.no[1])/float(df2.total[1]))**2) )
+	print('\n')
+print('....................')
+#FirstMath('gender.csv')
+FirstMath('age.csv')
+#FirstMath('speciality.csv')
+
 
