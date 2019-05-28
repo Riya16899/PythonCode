@@ -1,0 +1,17 @@
+age,gender,speciality,result
+19,f,it,yes
+21,f,it,yes
+20,m,medicine,no
+35,m,engineering,no
+34,m,medicine,yes
+28,m,sociology,no
+35,f,it,yes
+40,f,medicine,no
+35,m,it,yes
+23,m,it,no
+24,f,engineering,no
+23,f,medicine,no
+24,f,sociology,yes
+29,m,it,no
+23,f,sociology,yes
+24,f,medicine,yes
