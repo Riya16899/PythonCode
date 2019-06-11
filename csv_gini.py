@@ -52,6 +52,7 @@ with open('age.csv','w') as writeFileAge:
 def FirstMath(filename):
 	df2 = pd.read_csv(filename)
 	f = []
+	pp = []
 	#print csv.reader(df2)
 	#print(len(df2))
 	for i in range(0,len(df2)):
@@ -60,8 +61,12 @@ def FirstMath(filename):
 	print f
 	for i in range(0,len(f)):
 		p = (float(df2.total[i])/16 * f[i])
+		print p
+		pp.append(p)
+	print pp[0] + pp[1] + pp[2] + pp[3]
 
-	print (float(df2.total[0])/16 * f[0]) + (float(df2.total[1])/16 * f[1])
+	#print (float(df2.total[0])/16 * f[0]) + (float(df2.total[1])/16 * f[1])
+
 
 
 	#print   1 - ( ((float(df2.yes[0])/float(df2.total[0]))**2) ) - ( ((float(df2.no[0])/float(df2.total[0]))**2) )
@@ -71,7 +76,7 @@ def FirstMath(filename):
 	print('\n')
 print('....................')
 #FirstMath('gender.csv')
-FirstMath('age.csv')
-#FirstMath('speciality.csv')
+#FirstMath('age.csv')
+FirstMath('speciality.csv')
 
 
